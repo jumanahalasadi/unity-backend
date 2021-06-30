@@ -39,24 +39,30 @@ This runs the express app on port 8080. The app will be available for incoming r
 
 ## Environment Setup
 
-The .env file will need to be populated with configuration to connect to Firebase, please obtain the secret key from me (somehow).. TBD :-)
+The .env file will need to be populated with environment variables configuration to connect to Firebase, please obtain the environment keys from the doc in the email. 
 
+## Docker
+
+To build the image:
+```docker build -t node-backend . ```
+
+To run with environment variables:
 ```
-#express config
-
-PORT=8080
-HOST=localhost
-HOST_URL=http://localhost:8080
-
-#firebase database config (test mode, open access)
-
-API_KEY=
-AUTH_DOMAIN=unitytest-1144f.firebaseapp.com
-DATABASE_URL=https://unitytest-1144f.firebaseio.com
-PROJECT_ID=unitytest-1144f
-STORAGE_BUCKET=unitytest-1144f.appspot.com
-MESSAGING_SENDER_ID=250235530168
-APP_ID=1:250235530168:web:b59d1aa98fb62228adfd4d
+docker run \
+-it --rm -d \
+--name node-backend \
+-p 9000:8080 \
+-e PORT=8080 \
+-e HOST=localhost \
+-e HOST_URL= \
+-e API_KEY= \
+-e AUTH_DOMAIN= \
+-e DATABASE_URL= \
+-e PROJECT_ID= \
+-e STORAGE_BUCKET= \
+-e MESSAGING_SENDER_ID= \
+-e APP_ID= \
+node-backend
 ```
 
 ## Folder Structure
@@ -108,7 +114,6 @@ DELETE - Delete one Game Stream Item
 
 POST - Add Image to Cloud Storage
 ```router.post('/upload', upload, addImage);```
-
 
 
 
