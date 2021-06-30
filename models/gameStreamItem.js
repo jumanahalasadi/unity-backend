@@ -15,7 +15,6 @@ class GameStreamItem {
         isStreamable,
         version
     ){
-
         this.id = id;
         this.category = category;
         this.title = title;
@@ -32,3 +31,5 @@ class GameStreamItem {
         this.version = version;    
     }
 }
+
+module.exports = GameStreamItem;

@@ -10,7 +10,7 @@ const ImageUpload = require('../models/image');
 // Add Image to Storage and return the file path
 // https://firebase.google.com/docs/storage/web/upload-files#web-v8_1
 const addImage = async (req, res) => {
-    const defaultType = 1; // TO-DO
+    const defaultType = 2; // TO-DO - featured
     try {
         // Grab the file
         const file = req.file;

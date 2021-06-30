@@ -32,7 +32,7 @@ const getGameStreamItem = async (req, res, next) => {
     }
 }
 
-// Get GameStreamItems from our DB
+// Get all GameStreamItems from our DB
 const getAllGameStreamItems = async (req, res, next) => {
     try {
         const gameItems = await firestore.collection('gameStreamItems');
@@ -43,12 +43,8 @@ const getAllGameStreamItems = async (req, res, next) => {
         } else {
  
             // mapping to our GameStreamItem model
-            data.forEach( doc => {
-                const tempItem = new GameStreamItem (
-                    doc.id,
-                    doc.data()
-                );
-                gameItemsArray.push(tempItem);
+            data.forEach( async(doc) => {
+                gameItemsArray.push(doc.data());
             })
 
             // Send back the array of listings
